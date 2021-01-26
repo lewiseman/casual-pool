@@ -1,0 +1,37 @@
+{% extends 'root.html' %}
+{% load static %}
+
+{% block title %}Home{% endblock title %}
+
+{% block content %}
+
+<div class="container p-3 m-3">
+    <div class="shadow-lg p-3 mb-5 bg-white rounded">
+        <h2 class="text-center border border-3">Shift information</h2>
+        <div>
+            <h3>Working starting time : {{ shift_info.shift_start }}</h3>
+            <h3>Working ending time : {{ shift_info.shift_end }}</h3>
+            <h3>Lunch hours : {{ shift_info.lunch }}</h3>
+        </div>
+    </div>
+</div>
+
+<div class="container p-3 m-3">
+    <div class="shadow-lg p-3 mb-5 bg-white rounded">
+        <div>
+            <form action="" method="POST">
+                {% csrf_token %}
+                {{ form.as_p }}
+                <div class="p-3 text-center"><input class="btn btn-success" type="submit" name="Submit"></div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<div class="container p-3 m-3">
+    <div class="shadow-lg p-3 mb-5 bg-white rounded">
+        <h2 class="text-center border border-3">You are ending the shift</h2>
+    </div>
+</div>
+
+{% endblock content %}

@@ -1,0 +1,57 @@
+{% extends 'root.html' %}
+{% load static %}
+
+{% block title %}Home{% endblock title %}
+
+{% block content %}
+
+<div class="card-box mb-30">
+    <div class="pd-20">
+        <h4 class="text-blue h4">Attendance Report</h4>
+    </div>
+    <div class="pb-20">
+        <table class="table hover multiple-select-row data-table-export nowrap">
+            <thead>
+                <tr>
+                    <th class="table-plus datatable-nosort">Name</th>
+                    <th>Date</th>
+                    <th>Shift Start</th>
+                    <th>Shift End</th>
+                    <th>Lunch hour</th>
+                    <th>Total Working hours</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for shift in shifts %}
+                <tr>
+                    <td class="table-plus">{{ shift.educator_shift.user.username }}</td>
+                    <td>{{ shift.date }}</td>
+                    <td>{{ shift.shift_start }}</td>
+                    <td>{{ shift.shift_end }} </td>
+                    <td>{{ shift.lunch }}</td>
+                    <td>{{ shift.shift_start|timesince:shift.shift_end }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+
+{% endblock content %}
+
+{% block scripts %}
+<script src="{% static 'src/plugins/datatables/js/jquery.dataTables.min.js' %}"></script>
+<script src="{% static 'src/plugins/datatables/js/dataTables.bootstrap4.min.js' %}"></script>
+<script src="{% static 'src/plugins/datatables/js/dataTables.responsive.min.js' %}"></script>
+<script src="{% static 'src/plugins/datatables/js/responsive.bootstrap4.min.js' %}"></script>
+<!-- buttons for Export datatable -->
+<script src="{% static 'src/plugins/datatables/js/dataTables.buttons.min.js' %}"></script>
+<script src="{% static 'src/plugins/datatables/js/buttons.bootstrap4.min.js' %}"></script>
+<script src="{% static 'src/plugins/datatables/js/buttons.print.min.js' %}"></script>
+<script src="{% static 'src/plugins/datatables/js/buttons.html5.min.js' %}"></script>
+<script src="{% static 'src/plugins/datatables/js/buttons.flash.min.js' %}"></script>
+<script src="{% static 'src/plugins/datatables/js/pdfmake.min.js' %}"></script>
+<script src="{% static 'src/plugins/datatables/js/vfs_fonts.js' %}"></script>
+<!-- Datatable Setting js -->
+<script src="{% static 'vendors/scripts/datatable-setting.js' %}"></script>
+{% endblock scripts %}

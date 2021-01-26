@@ -1,0 +1,119 @@
+{% extends 'root.html' %}
+{% load static %}
+
+{% block title %}Home{% endblock title %}
+
+{% block content %}
+
+<div class="border border-success w-25 rounded-pill m-3">
+    <h4 class="text-center"> {{ today }} </h4>
+</div>
+
+
+<div class="card-box mb-30">
+    <div class="pd-20">
+        <h4 class="text-blue h4">Baby Room</h4>
+    </div>
+    <div class="pb-20">
+        <table class="data-table table stripe hover nowrap">
+            <thead>
+                <tr>
+                    <th class="table-plus datatable-nosort">Staff</th>
+                    <th>From</th>
+                    <th>To</th>
+                    <th>Start Shift</th>
+                    <th>End Shift</th>
+                    <th>Toil</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for shift in shifts %}
+                {% if shift.educator_shift.room == 'Baby Room 0 - 12' %}
+                <tr>
+                    <td class="table-plus">{{shift.educator_shift.user.username}}</td>
+                    <td>{{shift.shift_start}}</td>
+                    <td>{{shift.shift_end}}</td>
+                    <td><a class="btn btn-sm btn-success" href="{% url 'pin_in' pk=shift.id %}">Start Shift</a></td>
+                    <td><a class="btn btn-sm btn-danger" href="{% url 'pin_out' pk=shift.id %}">End Shift</a></td>
+                    <td><a class="btn btn-sm btn-primary" href="#">Add</a></td>
+                </tr>
+                {% endif %}
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+
+
+
+<div class="card-box mb-30">
+    <div class="pd-20">
+        <h4 class="text-blue h4">Toddler Room</h4>
+    </div>
+    <div class="pb-20">
+        <table class="data-table table stripe hover nowrap">
+            <thead>
+                <tr>
+                    <th class="table-plus datatable-nosort">Staff</th>
+                    <th>From</th>
+                    <th>To</th>
+                    <th>Start Shift</th>
+                    <th>End Shift</th>
+                    <th>Toil</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for shift in shifts %}
+                {% if shift.educator_shift.room == 'Toddlers Room 12' %}
+                <tr>
+                    <td class="table-plus">{{shift.educator_shift.user.username}}</td>
+                    <td>{{shift.shift_start}}</td>
+                    <td>{{shift.shift_end}}</td>
+                    <td><a class="btn btn-sm btn-success" href="{% url 'pin_in' pk=shift.id %}">Start Shift</a></td>
+                    <td><a class="btn btn-sm btn-danger" href="{% url 'pin_out' pk=shift.id %}">End Shift</a></td>
+                    <td><a class="btn btn-sm btn-primary" href="#">Add</a></td>
+                </tr>
+                {% endif %}
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+
+
+
+<div class="card-box mb-30">
+    <div class="pd-20">
+        <h4 class="text-blue h4">Support</h4>
+    </div>
+    <div class="pb-20">
+        <table class="data-table table stripe hover nowrap">
+            <thead>
+                <tr>
+                    <th class="table-plus datatable-nosort">Staff</th>
+                    <th>From</th>
+                    <th>To</th>
+                    <th>Start Shift</th>
+                    <th>End Shift</th>
+                    <th>Toil</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for shift in shifts %}
+                {% if shift.educator_shift.room == None %}
+                <tr>
+                    <td class="table-plus">{{shift.educator_shift.user.username}}</td>
+                    <td>{{shift.shift_start}}</td>
+                    <td>{{shift.shift_end}}</td>
+                    <td><a class="btn btn-sm btn-success" href="{% url 'pin_in' pk=shift.id %}">Start Shift</a></td>
+                    <td><a class="btn btn-sm btn-danger" href="{% url 'pin_out' pk=shift.id %}">End Shift</a></td>
+                    <td><a class="btn btn-sm btn-primary" href="#">Add</a></td>
+                </tr>
+                {% endif %}
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+
+{% endblock content %}

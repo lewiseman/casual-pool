@@ -1,0 +1,163 @@
+{% extends 'root.html' %}
+{% load static %}
+{% block title %}Home{% endblock title %}
+
+{% block content %}
+
+<div class="card-box mb-30">
+    <div class="pd-20">
+        <h4 class="text-blue h4">Available Educators</h4>
+    </div>
+    <div class="pb-20">
+        <table class="data-table table stripe hover nowrap">
+            <thead>
+                <tr>
+                    <th class="table-plus datatable-nosort"></th>
+                    <th>Name</th>
+                    <th>Qualifucation</th>
+                    <th>Date</th>
+                    <th>From</th>
+                    <th>To</th>
+                    <th class="datatable-nosort">Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for available in availability %}
+                <tr>
+                    <td class="table-plus">
+                        <img src="{{ available.educator.profile_pic.url }}" width="70" height="70" alt="">
+                    </td>
+                    <td class="table-plus">{{ available.educator.user.first_name }} {{ available.educator.user.last_name }}</td>
+                    <td>{{ available.educator.qualification }}</td>
+                    <td>{{ available.date }}</td>
+                    <td>{{ available.start_time }}</td>
+                    <td>{{ available.end_time }}</td>
+                    <td>
+                        <div class="dropdown">
+                            <a class="btn btn-link font-24 p-0 line-height-1 no-arrow dropdown-toggle" href="#"
+                                role="button" data-toggle="dropdown">
+                                <i class="dw dw-more"></i>
+                            </a>
+                            <div class="dropdown-menu dropdown-menu-right dropdown-menu-icon-list">
+                                <a class="dropdown-item" href="{% url 'make_booking' available.id %}"><i class="dw dw-eye"></i> Book</a>
+                            </div>
+                        </div>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<div class="card-box mb-30">
+    <div class="pd-20">
+        <h4 class="text-blue h4">Bookings</h4>
+    </div>
+    <div class="pb-20">
+        <table class="data-table table stripe hover nowrap">
+            <thead>
+                <tr>
+                    <th class="table-plus datatable-nosort"></th>
+                    <th>Name</th>
+                    <th>Date</th>
+                    <th>Qualification</th>
+                    <th>Shift</th>
+                    <th>Status</th>
+                    <th class="datatable-nosort">Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for book in booking %}
+                <tr>
+                    <td class="table-plus">
+                        <img src="{{ book.educator.profile_pic.url }}" width="70" height="70" alt="">
+                    </td>
+                    <td class="table-plus">{{ book.educator.user.first_name }} {{ book.educator.user.last_name }}</td>
+                    <td>{{ book.date }}</td>
+                    <td>{{ book.educator.qualification }}</td>
+                    <td>{{ book.shift_start_time }} to {{ book.shift_end_time }}</td>
+                    <td>{{ book.status }}</td>
+                    <td>
+                        <div class="dropdown">
+                            <a class="btn btn-link font-24 p-0 line-height-1 no-arrow dropdown-toggle" href="#"
+                                role="button" data-toggle="dropdown">
+                                <i class="dw dw-more"></i>
+                            </a>
+                            <div class="dropdown-menu dropdown-menu-right dropdown-menu-icon-list">
+                                <a class="dropdown-item" href="{% url 'update_booking' book.id %}"><i class="dw dw-edit2"></i> Update</a>
+                                <a class="dropdown-item" href="{% url 'cancel_booking' book.id %}"><i class="dw dw-delete-3"></i> Cancel</a>
+                            </div>
+                        </div>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+
+
+
+<div class="card-box mb-30">
+    <div class="pd-20">
+        <h4 class="text-blue h4">Posted Jobs</h4>
+    </div>
+    <div class="pb-20">
+        <div class="clearfix mb-20">
+            <div class="pull-right">
+                <a href="{% url 'create_job' %}" class="btn btn-primary btn-sm scroll-click">Add</a>
+            </div>
+        </div>
+        <table class="data-table table stripe hover nowrap">
+            <thead>
+                <tr>
+                    <th class="table-plus datatable-nosort">Qualification</th>
+                    <th>Date</th>
+                    <th>Shift</th>
+                    <th class="datatable-nosort">Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for job in jobs %}
+                <tr>
+                    <td class="table-plus">{{ job.qualification }}</td>
+                    <td>{{ job.date }}</td>
+                    <td>{{ job.shift_start_time }} to {{ job.shift_end_time }}</td>
+                    <td>
+                        <div class="dropdown">
+                            <a class="btn btn-link font-24 p-0 line-height-1 no-arrow dropdown-toggle" href="#"
+                                role="button" data-toggle="dropdown">
+                                <i class="dw dw-more"></i>
+                            </a>
+                            <div class="dropdown-menu dropdown-menu-right dropdown-menu-icon-list">
+                                <a class="dropdown-item" href="{% url 'update_job' job.id %}"><i class="dw dw-edit2"></i> Edit</a>
+                                <a class="dropdown-item" href="{% url 'delete_job' job.id %}"><i class="dw dw-delete-3"></i> Delete</a>
+                            </div>
+                        </div>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+
+{% endblock content %}
+
+{% block scripts %}
+<script src="{% static 'src/plugins/datatables/js/jquery.dataTables.min.js' %}"></script>
+<script src="{% static 'src/plugins/datatables/js/dataTables.bootstrap4.min.js' %}"></script>
+<script src="{% static 'src/plugins/datatables/js/dataTables.responsive.min.js' %}"></script>
+<script src="{% static 'src/plugins/datatables/js/responsive.bootstrap4.min.js' %}"></script>
+<!-- buttons for Export datatable -->
+<script src="{% static 'src/plugins/datatables/js/dataTables.buttons.min.js' %}"></script>
+<script src="{% static 'src/plugins/datatables/js/buttons.bootstrap4.min.js' %}"></script>
+<script src="{% static 'src/plugins/datatables/js/buttons.print.min.js' %}"></script>
+<script src="{% static 'src/plugins/datatables/js/buttons.html5.min.js' %}"></script>
+<script src="{% static 'src/plugins/datatables/js/buttons.flash.min.js' %}"></script>
+<script src="{% static 'src/plugins/datatables/js/pdfmake.min.js' %}"></script>
+<script src="{% static 'src/plugins/datatables/js/vfs_fonts.js' %}"></script>
+<!-- Datatable Setting js -->
+<script src="{% static 'vendors/scripts/datatable-setting.js' %}"></script>
+{% endblock scripts %}

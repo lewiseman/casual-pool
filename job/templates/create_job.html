@@ -1,0 +1,21 @@
+{% extends 'root.html' %}
+{% load static %}
+
+{% block title %}Home{% endblock title %}
+
+{% block content %}
+
+<div class="pd-20 card-box mb-30">
+    <div class="clearfix">
+        <div class="pull-left">
+            <h4 class="text-blue h4">Add a new Job</h4>
+        </div>
+    </div>
+    <form action="" method="POST">
+        {% csrf_token %}
+        {{form.as_p}}
+        <input class="btn btn-primary" type="submit" name="Confirm">
+    </form>
+</div>
+
+{% endblock content %}

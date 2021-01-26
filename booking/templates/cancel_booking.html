@@ -1,0 +1,29 @@
+{% extends 'root.html' %}
+{% load static %}
+
+{% block title %}Home{% endblock title %}
+
+{% block content %}
+
+<div class="row clearfix">
+    <div class="col-sm-12 col-md-4 mb-30">
+        <div class="card card-box text-center">
+            <div class="card-body">
+                <h5 class="card-title">Are you sure you want to cancel the booking below?</h5>
+                <h6 class="card-text">Date: {{item.date}}</h6>
+                <h6 class="card-text">Educator: {{item.educator}}</h6>
+                <h6 class="card-text">Shift: {{item.shift_start_time}} to {{item.shift_end_time}}</h6>
+                <div class="p-4">
+                <form action="{% url 'cancel_booking' item.id  %}" method="POST">
+				
+                    {% csrf_token %}
+                    <a class="btn btn-warning" href="{% url 'manager_home' %}">Cancel</a>
+                    <input class="btn btn-danger" type="submit" name="Confirm">
+                </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock content %}

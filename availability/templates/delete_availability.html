@@ -1,0 +1,29 @@
+{% extends 'root.html' %}
+{% load static %}
+
+{% block title %}Home{% endblock title %}
+
+{% block content %}
+
+<div class="row clearfix">
+    <div class="col-sm-12 col-md-4 mb-30">
+        <div class="card card-box text-center">
+            <div class="card-body">
+                <h5 class="card-title">Are you sure you want to delete availability below?</h5>
+                <h6 class="card-text">Date: {{item.date}}</h6>
+                <h6 class="card-text">Available Time: {{item.start_time}} to {{item.end_time}}</h6>
+                <div class="p-4">
+                    <form action="{% url 'delete_availability' item.id  %}" method="POST">
+
+                        {% csrf_token %}
+                        <a class="btn btn-warning" href="{% url 'educator_home' %}">Cancel</a>
+
+                        <input class="btn btn-danger" type="submit" name="Confirm">
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock content %}

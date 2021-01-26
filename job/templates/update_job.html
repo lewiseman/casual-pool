@@ -1,0 +1,43 @@
+{% extends 'root.html' %}
+{% load static %}
+
+{% block title %}Home{% endblock title %}
+
+{% block content %}
+
+<div class="pd-20 card-box mb-30">
+    <div class="clearfix">
+        <div class="pull-left">
+            <h4 class="text-blue h4">Add a new Job</h4>
+        </div>
+    </div>
+    <form>
+        <div class="form-group row">
+            <label class="col-sm-12 col-md-2 col-form-label">Date</label>
+            <div class="col-sm-12 col-md-10">
+                {{form.date}}
+            </div>
+        </div>
+        <div class="form-group row">
+            <label class="col-sm-12 col-md-2 col-form-label">Shift Start Time</label>
+            <div class="col-sm-12 col-md-10">
+                {{form.shift_start_time}}
+            </div>
+        </div>
+        <div class="form-group row">
+            <label class="col-sm-12 col-md-2 col-form-label">Shift End Time</label>
+            <div class="col-sm-12 col-md-10">
+                {{form.shift_end_time}}
+            </div>
+        </div>
+        <div class="form-group row">
+            <label class="col-sm-12 col-md-2 col-form-label">Select</label>
+            <div class="col-sm-12 col-md-10">
+                {{form.qualification}}
+            </div>
+        </div>
+        <a href="#" class="btn btn-primary">Submit</a> 
+    </form>
+</div>
+
+{% endblock content %}

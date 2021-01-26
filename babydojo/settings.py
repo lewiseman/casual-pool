@@ -25,7 +25,7 @@ SECRET_KEY = 'b)m@38gzp!7j&^n%(ez6fcb!=+dse+$@$+n98w$(o3jr6&nt(x'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['casual-pool-app.herokuapp', '127.0.0.1']
+ALLOWED_HOSTS = ['casual-pool-app.herokuapp.com', '127.0.0.1']
 
 
 # Application definition

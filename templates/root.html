@@ -186,6 +186,11 @@
 						</a>
 					</li>
 					{% endif %}		
+					<li>
+						<a href="{% url 'roster' %}" class="dropdown-toggle no-arrow {% if request.resolver_match.url_name == 'roster' %} active {% endif %}">
+							<span class="mtext">Rostering</span>
+						</a>
+					</li>
 				</ul>
 			</div>
 		</div>

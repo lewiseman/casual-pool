@@ -10,9 +10,14 @@ class Shift(models.Model):
     )
     educator_shift = models.ForeignKey(Educator, null=True, on_delete=models.SET_NULL, blank=True)
     date = models.DateField(null=True)
-    shift_start = models.DateTimeField(null=True)
-    shift_end = models.DateTimeField(null=True)
+    shift_start = models.TimeField(blank=True, null=True)
+    shift_end = models.TimeField(blank=True, null=True)
     lunch = models.CharField(max_length=200, null=True, choices=STIME)
 
     def __str__(self):
         return self.lunch
+
+    def day_date(self):
+        dy = str(self.date)
+        day = dy[-2:]
+        return int(day)

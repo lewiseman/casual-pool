@@ -15,9 +15,14 @@ class Shift(models.Model):
     lunch = models.CharField(max_length=200, null=True, choices=STIME)
 
     def __str__(self):
-        return self.lunch
+        return self.educator_shift.user.username
 
     def day_date(self):
         dy = str(self.date)
         day = dy[-2:]
         return int(day)
+
+class Holidays(models.Model):
+    name = models.CharField(max_length=200, null= True, blank=True)
+    date = models.DateField(null=True)
+    description = models.TextField(null=True)

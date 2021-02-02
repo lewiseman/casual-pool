@@ -12,6 +12,10 @@ def has_group(user, group_name):
 
     return group in user.groups.all()
 
+@register.filter(name='get_item')
+def get_item(dictionary, key):
+    return dictionary.get(key)
+
 
 #{% if request.user|has_group:"mygroup" %} 
 #    <p>User belongs to my group 

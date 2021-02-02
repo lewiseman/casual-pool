@@ -77,7 +77,7 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
-                'base.context_processors.leaves.leaves'
+                'base.context_processors.home.leaves',
             ],
             'libraries':{
                 'filter': 'base.templatetags.auth_extra',

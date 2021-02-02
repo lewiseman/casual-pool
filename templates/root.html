@@ -187,7 +187,7 @@
 					</li>
 					{% endif %}		
 					<li>
-						<a href="{% url 'roster' %}" class="dropdown-toggle no-arrow {% if request.resolver_match.url_name == 'roster' %} active {% endif %}">
+						<a href="{% url 'archive_week' year=2021 week=5 %}" class="dropdown-toggle no-arrow {% if request.resolver_match.url_name == 'archive_week' %} active {% endif %}">
 							<span class="mtext">Rostering</span>
 						</a>
 					</li>

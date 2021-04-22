@@ -3,7 +3,7 @@ This is an employee management service for a childcare system
 Most of the parts are done , only some few issues need be fixed
 
 ## It has the following features
-*Add when one is available for work
+*Add when one is available for work  
 *Show accepted jobs
 *Show jobs you are invited
 *List job post that relate to your qualifications

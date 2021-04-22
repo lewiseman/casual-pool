@@ -29,5 +29,5 @@ Most of the parts are done , only some few issues need be fixed
 Do not log in as admin, there will be an error
 
 ## Screenshots
-![Image](https://raw.githubusercontent.com/lewiseman/test/master/static/images/screenshots/screen-one.png)
-![Image](https://raw.githubusercontent.com/lewiseman/test/master/static/images/screenshots/screen-two.png)
+![Image](https://raw.githubusercontent.com/lewiseman/casual-pool/master/static/images/screenshot/screen-one.png)
+![Image](https://raw.githubusercontent.com/lewiseman/casual-pool/master/static/images/screenshot/screen-two.png)
